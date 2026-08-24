@@ -1,0 +1,2009 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://file.garden/agvyx2xYGnD9uen_/pekgmmyagnrmw0d06gatzrj7bw.png">
+  <title>@accused.</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+  --active-banner: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+body {
+  min-height: 100vh;
+  background: url('https://file.garden/agvyx2xYGnD9uen_/pekgmmyagnrmw0d06gatzrj7bw.png') center/cover no-repeat fixed, #060606;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 40px 20px;
+  overflow-y: auto;
+  color: #ffffff;
+}
+
+.intro-panel {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.intro-panel.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.intro-logo img {
+  width: 350px;
+  height: 350px;
+  object-fit: contain;
+  margin-bottom: -20px;
+}
+
+.intro-text-box {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-typewriter {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.1rem;
+  color: #ffffff;
+  border-right: 2px solid #ffffff;
+  text-align: left;
+  min-height: 60px;
+  padding: 20px;
+  animation: typewriter-cursor 0.7s infinite;
+  margin-bottom: auto;
+  margin-top: -50px;
+}
+
+.intro-proceed {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  padding: 15px 40px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.intro-proceed:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.intro-proceed:enabled {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.intro-proceed:enabled:hover {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.intro-credit {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 10px;
+}.blur-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  margin: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: fixed;
+  width: calc(100% - 40px);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 500;
+  transition: text-shadow 0.3s, transform 0.2s;
+}
+
+.navbar ul li a:hover {
+  transform: scale(1.05);
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #ffffff,
+    0 0 20px #ffffff,
+    0 0 40px #ffffff;
+}
+
+.logo-container {
+  position: relative;
+  width: 150px; 
+  height: 50px;
+  z-index: 1;
+}
+
+.logo-text,
+.logo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #f5f5f5;
+  object-fit: contain;
+  animation: morph 4s infinite;
+}
+
+.logo-img {
+  font-size: 0;
+}
+
+@keyframes morph {
+  0%, 45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50%, 95% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.logo-container .logo-img {
+  animation-delay: 2s; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 40px;
+    color: #ffffff;
+    margin: 20px 0 20px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(to right, #fff, #000, #fff);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: infiniteGradient 5s linear infinite;
+}
+
+.introducing-ransom {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: 40px 0 40px;
+    font-style: italic;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+
+.video-train {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  will-change: transform;
+}
+
+.slide {
+  width: 480px;
+  height: 270px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform .35s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.slide::after {
+  content: "▶";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  color: rgba(255, 255, 255, .85);
+  opacity: 0;
+  transition: .3s;
+}
+
+.slide:hover {
+  transform: scale(1.07);
+}
+
+.slide:hover::after {
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .35s;
+  z-index: 999;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 960px;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 22px;
+  overflow: hidden;
+  transform: scale(.85);
+  transition: .35s;
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .slide {
+    width: 320px;
+    height: 180px;
+  }
+}
+
+@keyframes infiniteGradient {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: calc(100vh - 120px); 
+  z-index: 1;
+  position: relative;
+  margin-bottom: 60px; 
+}
+
+.card {
+  width: 170px;
+  height: 500px;
+  background: rgba(30, 30, 30, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+  background: rgba(40, 40, 40, 0.6);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
+  width: 420px;
+  z-index: 10;
+}
+
+main {
+  position: relative;
+  z-index: 5; 
+  padding-top: 120px;
+}
+
+html, body {
+  height: auto;     
+  min-height: 100vh;  
+  overflow-y: auto;  
+}
+
+
+.card {
+  overflow: visible;
+}
+
+.card.side {
+  filter: blur(0);
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+.container-wrapper:hover .side {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.card.main {
+  width: 170px;
+  transition: width 0.45s ease, transform 0.45s ease;
+}
+
+.card.main:hover {
+  width: 420px;
+  transform: scale(1.05);
+}
+
+.profile-ui {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card.main:hover .profile-ui {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.top-label {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  position: relative;
+  margin-top: -70px;
+  margin-bottom: 10px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #111;
+  z-index: 3;
+  transform: translateY(230px);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .avatar {
+  transform: translateY(0);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.display-name {
+  font-size: 22px;
+  transform: translateY(250px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.card:hover .display-name {
+  transform: translateY(0);
+}
+
+.username {
+  font-size: 12px;
+  transform: translateY(250px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  font-style: italic;
+}
+
+.card:hover .username {
+  transform: translateY(0);
+  opacity: 0.7;
+}
+
+.status-box {
+  width: 100%;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 0;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.card:hover .status-box {
+  opacity: 1;
+  visibility: visible;
+}
+
+.activity-box {
+  width: 100%;
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.card:hover .activity-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.activity-icon {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-icons-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.activity-icon-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 2px;
+}
+
+.activity-icon-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: contain;
+  min-width: 0;
+}
+
+.activity-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.activity-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.activity-details {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-slot {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: all 0.4s ease;
+}
+
+.card:hover .media-slot {
+  width: 100%;
+  height: 140px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-dot {
+  width: 18px;
+  height: 18px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: 2px solid #111;
+}
+
+.status-online { background: #23a55a; }
+.status-idle   { background: #f0b232; }
+.status-dnd    { background: #f23f43; }
+.status-offline{ background: #80848e; }
+
+.activity-icon-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-container {
+  width: 100%;
+  padding: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.card:hover .spotify-container {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spotify-box {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.spotify-album {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.spotify-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.spotify-song {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.spotify-artist {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.spotify-timestamp {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.spotify-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.spotify-progress-fill {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.section {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+  padding-top: 40px;
+  margin-bottom: 60px;
+  min-height: 100vh;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#about {
+  margin-bottom: 80px;
+}
+
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.home-content {
+  text-align: center;
+  animation: slideUp 0.8s ease-out;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 15px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-content {
+  padding: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.spinning-logo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  perspective: 1000px;
+}
+
+.spinning-logo img {
+  width: 450px;
+  height: 450px;
+  animation: spinHorizontal 8s linear infinite;
+}
+
+@keyframes spinHorizontal {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.typewriter-text {
+  min-height: 200px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  border-right: 2px solid #ffffff;
+  white-space: pre-line;
+  word-wrap: break-word;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.typewriter-text.typing {
+  animation: typewriter-cursor 0.7s infinite;
+}
+
+@keyframes typewriter-cursor {
+  0%, 49% {
+    border-right-color: #ffffff;
+  }
+  50%, 100% {
+    border-right-color: transparent;
+  }
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.spinning-history-logo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.spinning-history-logo img {
+  width: 350px;
+  height: 350px;
+  animation: spinHorizontalHistory 6s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+.spinning-history-logo img:hover {
+  transform: scale(1.15);
+}
+
+@keyframes spinHorizontalHistory {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.history-text-box {
+  display: none;
+  margin-top: 30px;
+  padding: 20px 40px;
+  background: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ffffff;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.history-note {
+  margin-top: 100px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+.spinning-history-logo img:hover ~ .history-text-box {
+  display: block;
+}
+
+.video-slideshow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.video-slideshow {
+  position: relative;
+  width: 600px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+}
+
+.video-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+}
+
+.video-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-slide:not(.active) {
+  pointer-events: none;
+}
+
+.video-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.video-slide:hover img {
+  transform: scale(1.08);
+}
+
+.video-slide::after {
+  content: '▶';
+  position: absolute;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+
+.video-slide:hover::after {
+  color: rgb(255, 255, 255);
+}
+
+.drac-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 600px);
+  gap: 30px;
+  z-index: 2;
+  max-width: 100%;
+  position: relative;
+}
+
+.drac-banner-bg {
+  position: fixed;
+  inset: 0;
+  background: center/cover no-repeat;
+  opacity: 0;
+  filter: blur(2px) brightness(0.6);
+  transition: opacity 0.6s ease, background 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.drac {
+  position: relative;
+  width: 600px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(10,10,10,0.85);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  transition: transform 0.35s ease;
+}
+
+.drac:hover { transform: scale(1.03); }
+
+.drac-banner {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.drac:hover .drac-banner { opacity: 0.45; }
+
+.drac-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+}
+
+.drac .avatar {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  transform: translate(-50%, -50%);
+  transition: all 0.45s cubic-bezier(.19,1,.22,1);
+}
+
+.drac:hover .avatar {
+  left: 28px;
+  transform: translate(0, -50%);
+}
+
+.drac .info {
+  position: absolute;
+  left: 180px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-20px);
+  opacity: 0;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgb(255, 255, 255);
+  transition: all 0.4s ease;
+}
+
+.drac:hover .info {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.drac .info h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.drac .info p {
+  margin-top: 6px;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.drac::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.drac:hover::after { width: 100%; }
+
+@media (max-width: 1400px) {
+  body { overflow-y: auto; }
+  .card-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+</style></head>
+
+
+<body>
+
+    <div class="blur-overlay"></div>
+
+  <div id="intro-panel" class="intro-panel active">
+    <div class="intro-content">
+      <div class="intro-logo">
+        <img src="https://file.garden/agvyx2xYGnD9uen_/image-17.webp" alt="RANSXM Logo">
+      </div>
+      <div class="intro-text-box">
+        <p class="intro-typewriter">Welcome to ACCUSED</p>
+      </div>
+      <button class="intro-proceed">CLICK TO PROCEED</button>
+      <p class="intro-credit">Credits to amiri</p>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo-text">ACCUSED</div>
+      <img src="https://file.garden/agvyx2xYGnD9uen_/image-17.webp" alt="Ransxm Logo" class="logo-img">
+    </div>
+
+    <ul>
+      <li><a href="#halloffame" class="nav-link" data-section="halloffame">Home</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#archives" class="nav-link" data-section="archives">Archives</a></li>
+      <li><a href="#members" class="nav-link" data-section="members">Members</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="halloffame" class="section active">
+      <h2 class="section-title">Hall of Fame</h2>
+
+    <div class="container-wrapper">
+
+  <div class="card side" data-user-id="254741319551942657" data-audio="https://file.garden/aWlfqGYgcVhFp7er/Wus%20Good%20%20Curious.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/fallbg.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1540038563670794241/1541409828432248832/eb16faa703243631cf3d1f4b5f9f94dc.jpg?ex=6a8d7d45&is=6a8c2bc5&hm=7d3511f114485c202c4fcbc0dcd337ab3e6acaf667c3fbba9ba544c6e2860e10&?size=256"><span class="status-dot status-dnd"></span></div>
+      <div class="user-info">
+        <div class="display-name">4rens</div>
+        <div class="username">@4rens.1</div>
+      </div>
+      <div class="status-box">ignorance kills empathy</div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">ROBLOX</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card main" data-user-id="730131164836266084" data-audio="https://file.garden/aWlfqGYgcVhFp7er/hatebgm.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/hatebgg.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1519356544637075499/4b167895a797e84d642b0e9ba69d2027.png?size=4096&ignore=true?size=256"><span class="status-dot status-offline"></span></div>
+      <div class="user-info">
+        <div class="display-name">izumi</div>
+        <div class="username">@tokyo12323</div>
+      </div>
+      <div class="status-box">ignorance kills empathy</div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">Developer</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card main" data-user-id="1082069549958058186" data-audio="https://file.garden/aWlfqGYgcVhFp7er/THUGGIN%20-%20JAZZ%20CHILLIN%20FT.%20CRESTT%20TPK%20(OMV).mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/JETTBG.png">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1531001075098718339/c58b332fa98be66c990874d28b53ba9e.png?size=4096&ignore=true?size=256"><span class="status-dot status-offline"></span></div>
+      <div class="user-info">
+        <div class="display-name">𝓬𝓱𝓪𝓻𝓵𝓲𝓮</div>
+        <div class="username">@holytatang23</div>
+      </div>
+      <div class="status-box"></div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">No Current Activity</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="card main" data-user-id="394427038062346241" data-audio="https://file.garden/aWlfqGYgcVhFp7er/jinbgm.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/fgzfinal.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1175386615309418568/e482bbc858cdc500a68bcb1d107d99db.png?size=256"><span class="status-dot status-dnd"></span></div>
+      <div class="user-info">
+        <div class="display-name">Koie</div>
+        <div class="username">@e9irnm</div>
+      </div>
+      <div class="status-box">ROBLOX</div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">No Current Activity</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="card main" data-user-id="1071170463662886962" data-audio="https://file.garden/aWlfqGYgcVhFp7er/ftsadgas.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/luwi.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1071170463662886962/d8363ab5595bb020c114948ca88e2baa.webp?size=2048"></span></div>
+      <div class="user-info">
+        <div class="display-name">STAN</div>
+        <div class="username">@staxz.xclsv
+</div>
+      </div>
+      <div class="status-box"></div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">No Current Activity</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card main" data-user-id="751257222792872056" data-audio="https://file.garden/aWlfqGYgcVhFp7er/jaoxbgm.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/jaoxbg.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1378334939463815208/5fe93d580b296a5a4eb7d0c6b0f1b0ff.png?size=4096&ignore=true?size=256"><span class="status-dot status-offline"></span></div>
+      <div class="user-info">
+        <div class="display-name">kaìa</div>
+        <div class="username">@cally.ling</div>
+      </div>
+      <div class="status-box"></div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">No Current Activity</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card main" data-user-id="1413874403837476956" data-audio="https://file.garden/aWlfqGYgcVhFp7er/risk.mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/aki.gif">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/avatars/1502053264630354001/75c5e0286b08e2565e5132d1a22b744e.png?size=4096&ignore=true?size=256"><span class="status-dot status-offline"></span></div>
+      <div class="user-info">
+        <div class="display-name">Miku</div>
+        <div class="username">@xowhattt.</div>
+      </div>
+      <div class="status-box">SNTS IS THE BEST</div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name"></span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card main" data-user-id="777366679775608862" data-audio="https://file.garden/aWlfqGYgcVhFp7er/NWS%20-%20Spooky%20D.%20Monio%20(Official%20Audio).mp3">
+    <div class="profile-ui">
+      <div class="media-slot">
+        <img class="media-img" src="https://file.garden/aWlfqGYgcVhFp7er/senkaibggg.png">
+      </div>
+      <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1529840830083240017/1541428960641163346/73acc88084e82303bce1435c41975692.png?ex=6a8d8f16&is=6a8c3d96&hm=600c4567db20cb00dc66ca99291a0a9033234329901c5ada71a3c90fd7ac4b50&?size=256"><span class="status-dot status-offline"></span></div>
+      <div class="user-info">
+        <div class="display-name">ash</div>
+        <div class="username">@ash_yt20</div>
+      </div>
+      <div class="status-box"></div>
+      <div class="activity-box">
+        <div class="activity-content">
+          <span class="activity-name">No Current Activity</span>
+          <span class="activity-details"></span>
+        </div>
+        <div class="activity-icons-container"></div>
+      </div>
+      <div class="spotify-container" style="display: none;">
+        <div class="spotify-box">
+          <img class="spotify-album" src="">
+          <div class="spotify-info">
+            <div class="spotify-song"></div>
+            <div class="spotify-artist"></div>
+            <div class="spotify-progress-bar">
+              <div class="spotify-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title">About</h2>
+      <div class="spinning-logo">
+        <img src="https://file.garden/agvyx2xYGnD9uen_/pekgmmyagnrmw0d06gatzrj7bw.png" alt="amiri Logo">
+      </div>
+      <div class="section-content">
+        <p class="typewriter-text"></p>
+      </div>
+
+      <h3 class="section-title" style="margin-top: 60px;">Affiliations</h3>
+      <div class="section-content">
+      </div>
+
+      <div class="history-container">
+        <div class="spinning-history-logo">
+          <img src="https://file.garden/agvyx2xYGnD9uen_/image-17.webp" alt="History">
+        </div>
+        <div class="history-text-box">
+          <p>Where it all started.</p>
+        </div>
+        <div class="history-note">
+          <p>credit to amiri</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="archives" class="section">
+      <h2 class="section-title">Archives</h2>
+      <p class="introducing-ransom">Introducing accused</p>
+      <div class="section-content">
+        <div class="slider-wrapper" id="wrapper">
+          <div class="video-train" id="train" style="transform: translateX(0px);">
+          
+          <div class="slide" data-id="wYtUWcbB1z4"><img src="https://youtu.be/nC6hJY1Ym2U?si=MA2zrVkaqjLvrWV3"></div><div class="slide" data-id="EpzxWhMZ6Q4"><img src="https://img.youtube.com/vi/EpzxWhMZ6Q4/maxresdefault.jpg"></div><div class="slide" data-id="PbrKHKJmTyU"><img src="https://img.youtube.com/vi/PbrKHKJmTyU/maxresdefault.jpg"></div><div class="slide" data-id="_ARNVgVXhmU"><img src="https://img.youtube.com/vi/_ARNVgVXhmU/maxresdefault.jpg"></div><div class="slide" data-id="L59S20F7sp0"><img src="https://img.youtube.com/vi/L59S20F7sp0/maxresdefault.jpg"></div><div class="slide" data-id="pCsr5cfvrgo"><img src="https://img.youtube.com/vi/pCsr5cfvrgo/maxresdefault.jpg"></div>
+          
+          <div class="slide" data-id="wYtUWcbB1z4"><img src="https://img.youtube.com/vi/wYtUWcbB1z4/maxresdefault.jpg"></div><div class="slide" data-id="EpzxWhMZ6Q4"><img src="https://img.youtube.com/vi/EpzxWhMZ6Q4/maxresdefault.jpg"></div><div class="slide" data-id="PbrKHKJmTyU"><img src="https://img.youtube.com/vi/PbrKHKJmTyU/maxresdefault.jpg"></div><div class="slide" data-id="_ARNVgVXhmU"><img src="https://img.youtube.com/vi/_ARNVgVXhmU/maxresdefault.jpg"></div><div class="slide" data-id="L59S20F7sp0"><img src="https://img.youtube.com/vi/L59S20F7sp0/maxresdefault.jpg"></div><div class="slide" data-id="pCsr5cfvrgo"><img src="https://img.youtube.com/vi/pCsr5cfvrgo/maxresdefault.jpg"></div></div>
+        </div>
+        <div class="modal" id="modal">
+          <div class="close" id="close">✕</div>
+          <div class="modal-content">
+            <iframe id="player" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="members" class="section">
+      <h2 class="section-title">Members</h2>
+      <div class="section-content">
+        <p>we own this shit.</p>
+      </div>
+      <div class="drac-grid"><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/fallbg.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar"><img src="https://cdn.discordapp.com/avatars/410294280377073664/0532afb6190295ef8066da0039003e6c.png?size=4096&ignore=true?size=512')"></div>
+          <div class="info">
+            <h1>jazonofficial</h4></h1>
+            <p>@jazonofficial</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/Wus%20Good%20%20Curious.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/JETTBG.png'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1540038563670794241/1541409828432248832/eb16faa703243631cf3d1f4b5f9f94dc.jpg?ex=6a8d7d45&is=6a8c2bc5&hm=7d3511f114485c202c4fcbc0dcd337ab3e6acaf667c3fbba9ba544c6e2860e10&?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/THUGGIN%20-%20JAZZ%20CHILLIN%20FT.%20CRESTT%20TPK%20(OMV).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/senkaibggg.png'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1540038563670794241/1541409828432248832/eb16faa703243631cf3d1f4b5f9f94dc.jpg?ex=6a8d7d45&is=6a8c2bc5&hm=7d3511f114485c202c4fcbc0dcd337ab3e6acaf667c3fbba9ba544c6e2860e10&?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/NWS%20-%20Spooky%20D.%20Monio%20(Official%20Audio).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/uziibg.png'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1540038563670794241/1541409828432248832/eb16faa703243631cf3d1f4b5f9f94dc.jpg?ex=6a8d7d45&is=6a8c2bc5&hm=7d3511f114485c202c4fcbc0dcd337ab3e6acaf667c3fbba9ba544c6e2860e10&?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/I%20BE%20LIKE%20(DIFG)%20-%20gaspari%20x%20costa%20cashman%20(OLV).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/azixl.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar"><img src="https://cdn.discordapp.com/attachments/1540038563670794241/1541409828432248832/eb16faa703243631cf3d1f4b5f9f94dc.jpg?ex=6a8d7d45&is=6a8c2bc5&hm=7d3511f114485c202c4fcbc0dcd337ab3e6acaf667c3fbba9ba544c6e2860e10&?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/XXXTENTACION%20-%20Everybody%20Dies%20In%20Their%20Nightmares%20(Audio).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/hosea.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1466028324856926312/null.png?size=512')"></div>
+          <div class="info">
+            <h1>†</h1>
+            <p>@bl4ckboxrecorder</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/Air%20-%20Playground%20Love%20(Official%20Audio).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/neo.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/806491799626711060/b8ec2c49bfdcfa0eb9f4396cfad04342.png?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/neo.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/cosmo.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/867733069628964876/4b80e364a9103f60d3efc8d90d07cdeb.png?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/cosmo.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/aliabg.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/aliabgm.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/kirito.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1252278719184113724/9f0297a41d77b29a52fa74c7ea119b18.png?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/PARTYNEXTDOOR%20%26%20DRAKE%20-%20DEEPER.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/nami.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/984479240198164610/884745d83729db675118850c5bc4f974.png?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@04rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/nami.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/syd.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1423306502424498268/31ec1d0e861dfd3eae913c85c60fcf50.png?size=512')"></div>
+          <div class="info">
+            <h1>4rens</h1>
+            <p>@4rens.1</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/Ellie%20Goulding%20-%20Hate%20Me%20%5BLyrics%5D%20ft.%20Juice%20WRLD.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/aki.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/685676216556060673/d5889d6fbf83ab73aa7e2398e32b7b0e.png?size=512')"></div>
+          <div class="info">
+            <h1>Aki</h1>
+            <p>@a4301</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/toxic%20carti.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/kazu.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1270739210554314846/d21ce3afee8ce726cc07d06dffaba195.png?size=512')"></div>
+          <div class="info">
+            <h1>kazu</h1>
+            <p>@belovedxyz</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/(FREE)%20R%26B%20Type%20Beat%20-%20Somebody%20Else's.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/cess.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/958507899364188240/129fa540144440aaff38e7410466d9be.png?size=512')"></div>
+          <div class="info">
+            <h1>wgft2</h1>
+            <p>@wgft2</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/cess.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/miyuri.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/775643028593180683/dcd3f17ca220a9720087d3d8f72b5b4e.png?size=512')"></div>
+          <div class="info">
+            <h1>ﹺ</h1>
+            <p>@0wgft</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/miyuri.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/azi.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/819930690049146881/e431c3e7c5f4829511f67865f1f7bda6.png?size=512')"></div>
+          <div class="info">
+            <h1>⃟</h1>
+            <p>@6zvh.</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/Make%20You%20Fall%20in%20Love.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/allie.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1099664440879747104/d782ddc7741ecc7cd7d24cb58ce02b59.png?size=512')"></div>
+          <div class="info">
+            <h1>shxnell</h1>
+            <p>@shanxxs_</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/allie.mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/zyco.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1388379384309612626/a35e270e21f3d3d5cb70504fee8aa4fc.png?size=512')"></div>
+          <div class="info">
+            <h1>zyc</h1>
+            <p>@111.02.121</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/BIGS%20-%20What%20U%20Got%20ft.%20PRAY%20(Official%20Music%20Video).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/visage.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/407510866632900610/01348fe460aee5a26c2203a1b1c7418f.png?size=512')"></div>
+          <div class="info">
+            <h1>Visage </h1>
+            <p>@visagezxc</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/O%20SIDE%20MAFIA%20X%20BRGR%20-%20SHAKE%20(OFFICIAL%20MUSIC%20VIDEO).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/sebbg.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1436294719616454716/47ee2c04c76fa946c6c1fae178bec57f.png?size=512')"></div>
+          <div class="info">
+            <h1>Sebastian</h1>
+            <p>@etsab66</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/Flow%20G%20-%20UNA%20LAGI%20(Official%20Audio).mp3" preload="auto"></audio></div><div class="drac">
+        <div class="drac-banner" style="background-image:url('https://file.garden/aWlfqGYgcVhFp7er/zen.gif'); opacity:0.35;"></div>
+        <div class="drac-content">
+          <div class="avatar" style="background-image:url('https://cdn.discordapp.com/avatars/1317016754538549370/2b6ade900a955d6ef6f2ccc57c239de3.png?size=512')"></div>
+          <div class="info">
+            <h1>:</h1>
+            <p>@zenflyestasian</p>
+          </div>
+        </div>
+      <audio src="https://file.garden/aWlfqGYgcVhFp7er/vxc.mp3" preload="auto"></audio></div></div>
+      <div class="drac-banner-bg"></div>
+    </section>
+
+    <audio id="audio"></audio> 
+  </main>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- INTRO PANEL ---------- */
+  const introPanel = document.getElementById('intro-panel');
+  const introTypewriter = document.querySelector('.intro-typewriter');
+  const introProceedBtn = document.querySelector('.intro-proceed');
+  const introFullText = 'Welcome to ACCUSED';
+  let introIndex = 0;
+
+  if (introProceedBtn) introProceedBtn.disabled = true;
+
+  function typeIntro() {
+    if (!introTypewriter) return;
+    if (introIndex <= introFullText.length) {
+      introTypewriter.textContent = introFullText.slice(0, introIndex);
+      introIndex++;
+      setTimeout(typeIntro, 90);
+    } else if (introProceedBtn) {
+      introProceedBtn.disabled = false;
+    }
+  }
+  typeIntro();
+
+  if (introProceedBtn && introPanel) {
+    introProceedBtn.addEventListener('click', () => {
+      introPanel.classList.add('hidden');
+      setTimeout(() => { introPanel.style.display = 'none'; }, 800);
+    });
+  }
+
+  /* ---------- NAVIGATION ---------- */
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-section');
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      sections.forEach(sec => sec.classList.remove('active'));
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (targetId === 'about') startAboutTypewriter();
+    });
+  });
+
+  /* ---------- ABOUT TYPEWRITER ---------- */
+  const aboutText = "ACCUSED is a collective of creatives, producers, and visionaries " +
+    "who came together to build something real. From late night sessions to full " +
+    "releases, every member brings their own sound and story to the table. This is " +
+    "our home, our archive, and our history \u2014 built by the people who live it.";
+
+  let aboutTyped = false;
+  function startAboutTypewriter() {
+    if (aboutTyped) return;
+    aboutTyped = true;
+    const el = document.querySelector('.typewriter-text');
+    if (!el) return;
+    el.classList.add('typing');
+    let i = 0;
+    (function type() {
+      if (i <= aboutText.length) {
+        el.textContent = aboutText.slice(0, i);
+        i++;
+        setTimeout(type, 22);
+      } else {
+        el.classList.remove('typing');
+      }
+    })();
+  }
+
+  /* ---------- ARCHIVES: INFINITE VIDEO TRAIN ---------- */
+  const train = document.getElementById('train');
+  const wrapper = document.getElementById('wrapper');
+  let trainX = 0;
+  let trainPaused = false;
+  let singleSetWidth = 0;
+
+  function calcTrainWidth() {
+    if (!train) return;
+    const slides = train.querySelectorAll('.slide');
+    const half = Math.floor(slides.length / 2);
+    let w = 0;
+    for (let i = 0; i < half; i++) {
+      w += slides[i].offsetWidth + 30;
+    }
+    singleSetWidth = w;
+  }
+  calcTrainWidth();
+  window.addEventListener('resize', calcTrainWidth);
+
+  if (wrapper) {
+    wrapper.addEventListener('mouseenter', () => trainPaused = true);
+    wrapper.addEventListener('mouseleave', () => trainPaused = false);
+  }
+
+  function animateTrain() {
+    if (train && !trainPaused && singleSetWidth > 0) {
+      trainX -= 0.6;
+      if (Math.abs(trainX) >= singleSetWidth) trainX = 0;
+      train.style.transform = `translateX(${trainX}px)`;
+    }
+    requestAnimationFrame(animateTrain);
+  }
+  requestAnimationFrame(animateTrain);
+
+  /* ---------- ARCHIVES: VIDEO MODAL ---------- */
+  const modal = document.getElementById('modal');
+  const player = document.getElementById('player');
+  const closeBtn = document.getElementById('close');
+
+  document.querySelectorAll('.slide').forEach(slide => {
+    slide.addEventListener('click', () => {
+      const id = slide.getAttribute('data-id');
+      if (!id || !modal || !player) return;
+      player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      modal.classList.add('active');
+    });
+  });
+
+  function closeModal() {
+    if (!modal || !player) return;
+    modal.classList.remove('active');
+    player.src = '';
+  }
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ---------- AUDIO HANDLING ---------- */
+  const mainAudio = document.getElementById('audio');
+
+  function stopAllAudio(except) {
+    if (mainAudio && mainAudio !== except) {
+      mainAudio.pause();
+      mainAudio.currentTime = 0;
+    }
+    document.querySelectorAll('.drac audio').forEach(a => {
+      if (a !== except) {
+        a.pause();
+        a.currentTime = 0;
+      }
+    });
+  }
+
+  // Hall of Fame cards
+  document.querySelectorAll('.card[data-audio]').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const src = card.getAttribute('data-audio');
+      if (!src || !mainAudio) return;
+      stopAllAudio(mainAudio);
+      if (mainAudio.getAttribute('src') !== src) mainAudio.src = src;
+      mainAudio.volume = 0.5;
+      mainAudio.currentTime = 0;
+      mainAudio.play().catch(() => {});
+    });
+    card.addEventListener('mouseleave', () => {
+      if (mainAudio) {
+        mainAudio.pause();
+        mainAudio.currentTime = 0;
+      }
+    });
+  });
+
+  // Members (drac) cards
+  const dracBannerBg = document.querySelector('.drac-banner-bg');
+  document.querySelectorAll('.drac').forEach(drac => {
+    const audio = drac.querySelector('audio');
+    const banner = drac.querySelector('.drac-banner');
+
+    drac.addEventListener('mouseenter', () => {
+      if (audio) {
+        stopAllAudio(audio);
+        audio.volume = 0.4;
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
+      if (banner && dracBannerBg) {
+        dracBannerBg.style.backgroundImage = banner.style.backgroundImage;
+        dracBannerBg.style.opacity = '1';
+      }
+    });
+
+    drac.addEventListener('mouseleave', () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      if (dracBannerBg) dracBannerBg.style.opacity = '0';
+    });
+  });
+
+  /* ---------- LANYARD (LIVE DISCORD PRESENCE) ---------- */
+  async function fetchLanyard(userId) {
+    try {
+      const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+      const json = await res.json();
+      return json && json.success ? json.data : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function buildActivityImage(activity) {
+    if (!activity.assets || !activity.assets.large_image) return null;
+    const img = activity.assets.large_image;
+    if (img.startsWith('mp:external')) {
+      return 'https://media.discordapp.net/external/' + img.split('mp:external/')[1];
+    }
+    if (img.startsWith('spotify:')) {
+      return 'https://i.scdn.co/image/' + img.split('spotify:')[1];
+    }
+    return `https://cdn.discordapp.com/app-assets/${activity.application_id}/${img}.png`;
+  }
+
+  function updateCardFromLanyard(card, data) {
+    if (!data) return;
+
+    const statusDot = card.querySelector('.status-dot');
+    const activityName = card.querySelector('.activity-name');
+    const activityDetails = card.querySelector('.activity-details');
+    const iconsContainer = card.querySelector('.activity-icons-container');
+    const spotifyContainer = card.querySelector('.spotify-container');
+
+    if (statusDot) {
+      statusDot.className = 'status-dot status-' + (data.discord_status || 'offline');
+    }
+
+    const activities = (data.activities || []).filter(a => a.type !== 4 && a.type !== 2);
+
+    if (activityName && activityDetails) {
+      if (activities.length > 0) {
+        const act = activities[0];
+        activityName.textContent = act.name || '';
+        activityDetails.textContent = act.details || act.state || '';
+      } else {
+        activityName.textContent = 'No Current Activity';
+        activityDetails.textContent = '';
+      }
+    }
+
+    if (iconsContainer) {
+      iconsContainer.innerHTML = '';
+      activities.slice(0, 3).forEach(act => {
+        const url = buildActivityImage(act);
+        if (!url) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'activity-icon-img';
+        const im = document.createElement('img');
+        im.src = url;
+        wrap.appendChild(im);
+        iconsContainer.appendChild(wrap);
+      });
+    }
+
+    if (spotifyContainer) {
+      if (data.listening_to_spotify && data.spotify) {
+        spotifyContainer.style.display = 'block';
+        const album = card.querySelector('.spotify-album');
+        const song = card.querySelector('.spotify-song');
+        const artist = card.querySelector('.spotify-artist');
+        if (album) album.src = data.spotify.album_art_url || '';
+        if (song) song.textContent = data.spotify.song || '';
+        if (artist) artist.textContent = data.spotify.artist || '';
+        startSpotifyProgress(card, data.spotify.timestamps);
+      } else {
+        spotifyContainer.style.display = 'none';
+        stopSpotifyProgress(card);
+      }
+    }
+  }
+
+  function startSpotifyProgress(card, timestamps) {
+    if (!timestamps) return;
+    const fill = card.querySelector('.spotify-progress-fill');
+    if (!fill) return;
+    stopSpotifyProgress(card);
+    function update() {
+      const now = Date.now();
+      const pct = Math.min(100, Math.max(0,
+        ((now - timestamps.start) / (timestamps.end - timestamps.start)) * 100));
+      fill.style.width = pct + '%';
+    }
+    update();
+    card._spotifyInterval = setInterval(update, 1000);
+  }
+
+  function stopSpotifyProgress(card) {
+    if (card._spotifyInterval) {
+      clearInterval(card._spotifyInterval);
+      card._spotifyInterval = null;
+    }
+  }
+
+  async function refreshLanyardCards() {
+    const cards = document.querySelectorAll('.card[data-user-id]');
+    await Promise.all(Array.from(cards).map(async (card) => {
+      const userId = card.getAttribute('data-user-id');
+      if (!userId) return;
+      const data = await fetchLanyard(userId);
+      updateCardFromLanyard(card, data);
+    }));
+  }
+
+  refreshLanyardCards();
+  setInterval(refreshLanyardCards, 30000);
+
+});
+  </script>
+
+</body></html>
